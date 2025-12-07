@@ -20,8 +20,8 @@ public class SecurityConfig {
         http.authorizeHttpRequests((authorize) -> authorize.anyRequest().fullyAuthenticated());
         http.httpBasic(withDefaults());
         
-        //http.sessionManagement((sessionManagement) -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-        //http.addFilterBefore(new AuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.sessionManagement((sessionManagement) -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+        http.addFilterBefore(new AuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
         
         return http.build();
     }

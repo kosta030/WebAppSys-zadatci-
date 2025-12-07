@@ -19,6 +19,8 @@ import edu.fra.uas.service.UserService;
 @Controller
 public class UserController {
 
+  
+
     private final Logger log = org.slf4j.LoggerFactory.getLogger(UserController.class);
 
     @Autowired

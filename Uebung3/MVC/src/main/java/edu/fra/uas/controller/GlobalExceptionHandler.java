@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.web.bind.MissingServletRequestParameterException;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -28,6 +29,20 @@ public class GlobalExceptionHandler {
 
 		mav.setViewName("support");
 		return mav;
+    }
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ModelAndView handleTypeMismatch(HttpServletRequest req, MethodArgumentTypeMismatchException exception) {
+        log.debug("handleTypeMismatch() is called");
+        
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("exception", exception);
+        mav.addObject("url", req.getRequestURL());
+        mav.addObject("timestamp", new Date().toString());
+        mav.addObject("status", 400);
+
+        mav.setViewName("support");
+        return mav;
     }
 
 }

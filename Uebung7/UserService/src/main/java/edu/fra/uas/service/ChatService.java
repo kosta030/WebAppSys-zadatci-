@@ -44,9 +44,9 @@ public class ChatService {
         byte[] base64CredsBytes = Base64.encodeBase64(plainCredsBytes, false);
         String base64Creds = new String(base64CredsBytes);
 
-        headers.add("Authorization", "Basic " + base64Creds);
+       // headers.add("Authorization", "Basic " + base64Creds);
 
-        //headers.add(authenticationTokenHeaderName, authenticationToken);
+        headers.add(authenticationTokenHeaderName, authenticationToken);
 
         return headers;
     }

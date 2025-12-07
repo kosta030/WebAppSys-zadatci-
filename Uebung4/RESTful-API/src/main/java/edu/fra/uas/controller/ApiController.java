@@ -49,7 +49,7 @@ public class ApiController {
         log.debug("list() is called");
         List<UserDTO> users = userService.getAllUsersDTO();       
         if (users.isEmpty()) {
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.noContent().build(); // 204 No Conten
         } else if (users.size() > MAX_USERS && page == null) {
             int lastPage = (users.size() / MAX_USERS) + 1;
             Link first = linkTo(methodOn(ApiController.class).list(1)).withRel(IanaLinkRelations.FIRST);
